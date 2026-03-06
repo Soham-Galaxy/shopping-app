@@ -192,7 +192,7 @@ function App() {
             {/* Footer */}
             <footer className="app-footer">
                 <div className="container">
-                    <p>© 2026 Shopping App - Built with React, Node.js & MongoDB</p>
+                    <p>© 2026 Shopping App</p>
                 </div>
             </footer>
         </div>
