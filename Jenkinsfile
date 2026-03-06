@@ -46,5 +46,34 @@ pipeline {
       }
     }
 
+    stage('Update GitOps Repo') {
+    steps {
+        container('kaniko') {
+            withCredentials([usernamePassword(
+                credentialsId: 'gitops-creds',
+                usernameVariable: 'GIT_USER',
+                passwordVariable: 'GIT_PASS'
+            )]) {
+                sh '''
+                TAG=ci-${BUILD_NUMBER}
+
+                git clone https://${GIT_USER}:${GIT_PASS}@github.com/Soham-Galaxy/k8s-gitops.git
+                cd k8s-gitops
+
+                sed -i "s|shopping-backend:.*|shopping-backend:$TAG|" apps/shopping-app/base/backend-deployment.yaml
+                sed -i "s|shopping-frontend:.*|shopping-frontend:$TAG|" apps/shopping-app/base/frontend-deployment.yaml
+
+                git config user.email "jenkins@local"
+                git config user.name "jenkins"
+
+                git add .
+                git commit -m "CI: update shopping app images $TAG"
+                git push
+                '''
+                }
+          }
+      }
+    }
+
   }
 }
