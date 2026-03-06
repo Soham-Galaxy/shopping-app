@@ -16,7 +16,7 @@ pipeline {
 
     stage('Checkout Code') {
       steps {
-        git 'https://github.com/Soham-Galaxy/shopping-app.git'
+        echo "Code already checked out by Jenkins"
       }
     }
 
