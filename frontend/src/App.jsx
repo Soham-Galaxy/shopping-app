@@ -192,7 +192,7 @@ function App() {
             {/* Footer */}
             <footer className="app-footer">
                 <div className="container">
-                    <p>© 2026 Shopping App</p>
+                    <p>© 2026 Shopping App By Soham 😊</p>
                 </div>
             </footer>
         </div>
