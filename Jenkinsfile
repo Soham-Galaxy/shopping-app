@@ -50,7 +50,7 @@ pipeline {
     steps {
         container('kaniko') {
             withCredentials([usernamePassword(
-                credentialsId: 'gitops-creds',
+                credentialsId: 'github-creds',
                 usernameVariable: 'GIT_USER',
                 passwordVariable: 'GIT_PASS'
             )]) {
