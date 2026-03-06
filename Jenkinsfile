@@ -48,7 +48,7 @@ pipeline {
 
     stage('Update GitOps Repo') {
     steps {
-        container('kaniko') {
+        container('jnlp') {
             withCredentials([usernamePassword(
                 credentialsId: 'github-creds',
                 usernameVariable: 'GIT_USER',
